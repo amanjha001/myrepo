@@ -6,3 +6,14 @@ new content
 new content ew content
 new content ew content
 new content ew content
+  let appInstanceIdSet = new Set();
+  
+  linkDetailsResult = linkDetailsResult.filter((obj) => {
+    let appInstanceIdStr = obj.app_instance_id.toString(); // Ensure ObjectId is compared as a string
+    if (appInstanceIdSet.has(appInstanceIdStr)) {
+      return false;
+    } else {
+      appInstanceIdSet.add(appInstanceIdStr);
+      return true;
+    }
+  });
